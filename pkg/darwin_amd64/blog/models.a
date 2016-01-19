@@ -1,0 +1,135 @@
+!<arch>
+__.PKGDEF       0           0     0     644     9448      `
+go object darwin amd64 go1.5.2 X:none
+build id "1af016f81e7f42b56dcfcd23a36708c7b6f7774a"
+
+$$
+package models
+	import runtime "runtime"
+	import time "time"
+	type @"time".zone struct { @"time".name string; @"time".offset int; @"time".isDST bool }
+	type @"time".zoneTrans struct { @"time".when int64; @"time".index uint8; @"time".isstd bool; @"time".isutc bool }
+	type @"time".Location struct { @"time".name string; @"time".zone []@"time".zone; @"time".tx []@"time".zoneTrans; @"time".cacheStart int64; @"time".cacheEnd int64; @"time".cacheZone *@"time".zone }
+	func (@"time".lÂ·2 *@"time".Location "esc:0x22") String () (? string)
+	func (@"time".lÂ·2 *@"time".Location "esc:0x1") @"time".firstZoneUsed () (? bool)
+	func (@"time".lÂ·2 *@"time".Location "esc:0x12") @"time".get () (? *@"time".Location)
+	func (@"time".lÂ·6 *@"time".Location "esc:0x32") @"time".lookup (@"time".secÂ·7 int64) (@"time".nameÂ·1 string, @"time".offsetÂ·2 int, @"time".isDSTÂ·3 bool, @"time".startÂ·4 int64, @"time".endÂ·5 int64)
+	func (@"time".lÂ·2 *@"time".Location "esc:0x1") @"time".lookupFirstZone () (? int)
+	func (@"time".lÂ·4 *@"time".Location "esc:0x1") @"time".lookupName (@"time".nameÂ·5 string "esc:0x1", @"time".unixÂ·6 int64) (@"time".offsetÂ·1 int, @"time".isDSTÂ·2 bool, @"time".okÂ·3 bool)
+	type @"time".Duration int64
+	func (@"time".dÂ·2 @"time".Duration) Hours () (? float64) { var @"time".hourÂ·3 @"time".Duration; ; @"time".hourÂ·3 = @"time".dÂ·2 / @"time".Duration(0x34630b8a000); var @"time".nsecÂ·4 @"time".Duration; ; @"time".nsecÂ·4 = @"time".dÂ·2 % @"time".Duration(0x34630b8a000); return float64(@"time".hourÂ·3) + float64(@"time".nsecÂ·4) * 8190022623310637111963488201822504381538623676021880892417778544696899264837610290203272971060556344039023584360473938041055625214280336402169897364226048p-553 }
+	func (@"time".dÂ·2 @"time".Duration) Minutes () (? float64) { var @"time".minÂ·3 @"time".Duration; ; @"time".minÂ·3 = @"time".dÂ·2 / @"time".Duration(0xdf8475800); var @"time".nsecÂ·4 @"time".Duration; ; @"time".nsecÂ·4 = @"time".dÂ·2 % @"time".Duration(0xdf8475800); return float64(@"time".minÂ·3) + float64(@"time".nsecÂ·4) * 7678146209353722106395056769533233877065564876941352542109479049699919628723768656821910653339403201031675627614471533358284117434246264392176261853609984p-547 }
+	func (@"time".dÂ·2 @"time".Duration) Nanoseconds () (? int64) { return int64(@"time".dÂ·2) }
+	func (@"time".dÂ·2 @"time".Duration) Seconds () (? float64) { var @"time".secÂ·3 @"time".Duration; ; @"time".secÂ·3 = @"time".dÂ·2 / @"time".Duration(0x3b9aca00); var @"time".nsecÂ·4 @"time".Duration; ; @"time".nsecÂ·4 = @"time".dÂ·2 % @"time".Duration(0x3b9aca00); return float64(@"time".secÂ·3) + float64(@"time".nsecÂ·4) * 7198262071269114660816079141112770740375861891461678802759824945047098083990024106014198994535558872472104883612039846078596891298747423852523262413111296p-541 }
+	func (@"time".dÂ·2 @"time".Duration) String () (? string)
+	type @"time".Month int
+	func (@"time".mÂ·2 @"time".Month) String () (? string) { return @"time".months[@"time".mÂ·2 - @"time".Month(0x1)] }
+	type @"time".Weekday int
+	func (@"time".dÂ·2 @"time".Weekday) String () (? string) { return @"time".days[@"time".dÂ·2] }
+	type @"time".Time struct { @"time".sec int64; @"time".nsec int32; @"time".loc *@"time".Location }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Add (@"time".dÂ·3 @"time".Duration) (? @"time".Time) { @"time".tÂ·2.@"time".sec += int64(@"time".dÂ·3 / @"time".Duration(0x3b9aca00)); var @"time".nsecÂ·4 int32; ; @"time".nsecÂ·4 = int32(@"time".tÂ·2.@"time".nsec) + int32(@"time".dÂ·3 % @"time".Duration(0x3b9aca00)); if @"time".nsecÂ·4 >= 0x3b9aca00 { @"time".tÂ·2.@"time".sec++; @"time".nsecÂ·4 -= 0x3b9aca00 } else { if @"time".nsecÂ·4 < 0x0 { @"time".tÂ·2.@"time".sec--; @"time".nsecÂ·4 += 0x3b9aca00 } }; @"time".tÂ·2.@"time".nsec = @"time".nsecÂ·4; return @"time".tÂ·2 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") AddDate (@"time".yearsÂ·3 int, @"time".monthsÂ·4 int, @"time".daysÂ·5 int) (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") After (@"time".uÂ·3 @"time".Time "esc:0x1") (? bool) { return @"time".tÂ·2.@"time".sec > @"time".uÂ·3.@"time".sec || @"time".tÂ·2.@"time".sec == @"time".uÂ·3.@"time".sec && @"time".tÂ·2.@"time".nsec > @"time".uÂ·3.@"time".nsec }
+	func (@"time".tÂ·2 @"time".Time "esc:0x9") AppendFormat (@"time".bÂ·3 []byte "esc:0x1a", @"time".layoutÂ·4 string "esc:0x9") (? []byte)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Before (@"time".uÂ·3 @"time".Time "esc:0x1") (? bool) { return @"time".tÂ·2.@"time".sec < @"time".uÂ·3.@"time".sec || @"time".tÂ·2.@"time".sec == @"time".uÂ·3.@"time".sec && @"time".tÂ·2.@"time".nsec < @"time".uÂ·3.@"time".nsec }
+	func (@"time".tÂ·4 @"time".Time "esc:0x1") Clock () (@"time".hourÂ·1 int, @"time".minÂ·2 int, @"time".secÂ·3 int)
+	func (@"time".tÂ·4 @"time".Time "esc:0x1") Date () (@"time".yearÂ·1 int, @"time".monthÂ·2 @"time".Month, @"time".dayÂ·3 int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Day () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Equal (@"time".uÂ·3 @"time".Time "esc:0x1") (? bool) { return @"time".tÂ·2.@"time".sec == @"time".uÂ·3.@"time".sec && @"time".tÂ·2.@"time".nsec == @"time".uÂ·3.@"time".nsec }
+	func (@"time".tÂ·2 @"time".Time "esc:0x9") Format (@"time".layoutÂ·3 string "esc:0x9") (? string)
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") GobDecode (@"time".dataÂ·3 []byte "esc:0x1") (? error)
+	func (@"time".tÂ·3 @"time".Time "esc:0x1") GobEncode () (? []byte, ? error)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Hour () (? int)
+	func (@"time".tÂ·3 @"time".Time "esc:0x1") ISOWeek () (@"time".yearÂ·1 int, @"time".weekÂ·2 int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") In (@"time".locÂ·3 *@"time".Location "esc:0x12") (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") IsZero () (? bool) { return @"time".tÂ·2.@"time".sec == 0x0 && @"time".tÂ·2.@"time".nsec == 0x0 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Local () (? @"time".Time) { @"time".tÂ·2.@"time".loc = @"time".Local; return @"time".tÂ·2 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Location () (? *@"time".Location) { var @"time".lÂ·3 *@"time".Location; ; @"time".lÂ·3 = @"time".tÂ·2.@"time".loc; if @"time".lÂ·3 == nil { @"time".lÂ·3 = @"time".UTC }; return @"time".lÂ·3 }
+	func (@"time".tÂ·3 @"time".Time "esc:0x1") MarshalBinary () (? []byte, ? error)
+	func (@"time".tÂ·3 @"time".Time "esc:0x9") MarshalJSON () (? []byte, ? error)
+	func (@"time".tÂ·3 @"time".Time "esc:0x9") MarshalText () (? []byte, ? error)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Minute () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Month () (? @"time".Month)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Nanosecond () (? int) { return int(@"time".tÂ·2.@"time".nsec) }
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Round (@"time".dÂ·3 @"time".Duration) (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Second () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x9") String () (? string)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Sub (@"time".uÂ·3 @"time".Time "esc:0x1") (? @"time".Duration)
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") Truncate (@"time".dÂ·3 @"time".Duration) (? @"time".Time)
+	func (@"time".tÂ·2 @"time".Time "esc:0x12") UTC () (? @"time".Time) { @"time".tÂ·2.@"time".loc = @"time".UTC; return @"time".tÂ·2 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Unix () (? int64) { return @"time".tÂ·2.@"time".sec + -0xe7791f700 }
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") UnixNano () (? int64) { return (@"time".tÂ·2.@"time".sec + -0xe7791f700) * 0x3b9aca00 + int64(@"time".tÂ·2.@"time".nsec) }
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") UnmarshalBinary (@"time".dataÂ·3 []byte "esc:0x1") (? error)
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") UnmarshalJSON (@"time".dataÂ·3 []byte "esc:0x1") (@"time".errÂ·1 error)
+	func (@"time".tÂ·2 *@"time".Time "esc:0x1") UnmarshalText (@"time".dataÂ·3 []byte "esc:0x1") (@"time".errÂ·1 error)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Weekday () (? @"time".Weekday)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") Year () (? int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") YearDay () (? int)
+	func (@"time".tÂ·3 @"time".Time "esc:0x32") Zone () (@"time".nameÂ·1 string, @"time".offsetÂ·2 int)
+	func (@"time".tÂ·2 @"time".Time "esc:0x1") @"time".abs () (? uint64)
+	func (@"time".tÂ·5 @"time".Time "esc:0x1") @"time".date (@"time".fullÂ·6 bool) (@"time".yearÂ·1 int, @"time".monthÂ·2 @"time".Month, @"time".dayÂ·3 int, @"time".ydayÂ·4 int)
+	func (@"time".tÂ·4 @"time".Time "esc:0x32") @"time".locabs () (@"time".nameÂ·1 string, @"time".offsetÂ·2 int, @"time".absÂ·3 uint64)
+	type @"".Category struct { Id int64; Title string; Created @"time".Time "orm:\"index\""; Views int64 "orm:\"index\""; TopicTime @"time".Time "orm:\"index\""; TopicCount int64; TopicLastUserId int64 }
+	type @"".Topic struct { Id int64; Uid int64; Title string; Content string "orm:\"size(5000)\""; Attachment string; Created @"time".Time "orm:\"index\""; Updated @"time".Time "orm:\"index\""; Views int64 "orm:\"index\""; Author string; ReplyTime @"time".Time "orm:\"index\""; ReplyCount int64; ReplyLastUserId int64 }
+	func @"".GetAllTopics (@"".isDescÂ·2 bool) (? string) {  var @"".strÂ·3 string; @"".strÂ·3 = "this is true"; if true { return @"".strÂ·3 }; return "" }
+	func @"".init ()
+	var @"time".months [12]string
+	var @"time".days [7]string
+	var @"time".Local *@"time".Location
+	var @"time".UTC *@"time".Location
+
+$$
+_go_.o          0           0     0     644     14542     `
+go object darwin amd64 go1.5.2 X:none
+
+!
+  go13ldtime.a ş"".GetAllTopics  @  61ÛH    HÇÀ   H‰\$H‰D$Ã
+  0go.string."this is true"   0   "".~r1 type.string "".isDesc  type.bool     F  TgclocalsÂ·790e5cc5051fc0affc980ade09e929ec TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   V/data/goworkspace/src/blog/models/models.goş"".init     ”eH‹%    H;av4¶    €û t¶    €ûuÃè    Æ    è    Æ    Ãè    ë¶
+      $  "".initdoneÂ·   <  "".initdoneÂ·   R
+  "runtime.throwinit   b "".initdoneÂ·   n
+  time.init   z "".initdoneÂ·   ˆ
+  0runtime.morestack_noctxt        P P TP 
+ (( TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   V/data/goworkspace/src/blog/models/models.goş,type..hash."".Category    ’eH‹%    H;a†l  Hƒì H‹\$(H‰$Hƒ<$ „H  H‹\$0H‰\$HÇD$   è    H‹D$H‹\$(H‰$Hƒ<$ „  Hƒ$H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ „Ò   Hƒ$H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ „™   Hƒ$0H‰D$0H‰D$HÇD$   è    H‹D$H‹\$(H‰$Hƒ<$ t^Hƒ$8H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ t,Hƒ$PH‰D$0H‰D$HÇD$   è    H‹\$H‰\$8HƒÄ Ã‰%    ëË‰%    ë™‰%    é[ÿÿÿ‰%    é"ÿÿÿ‰%    ééşÿÿ‰%    é¬şÿÿè    éwşÿÿ
+      ~
+  runtime.memhash   Ø
+  runtime.strhash   ²
+  (type..hash.time.Time   
+  runtime.memhash   ğ
+  (type..hash.time.Time   Ô
+  runtime.memhash   €
+  0runtime.morestack_noctxt   0@  "".~r2  type.uintptr "".h type.uintptr "".p  "type.*"".Category @¥?@S    >Ò TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   V/data/goworkspace/src/blog/models/models.goş(type..eq."".Category À  °eH‹%    H;a†{  HƒìHH‹L$PH‹D$XH‹H‹(H9ët
+ÆD$` HƒÄHÃH‹qH‹IH‹PH‹@H9Á…5  H‰t$8H‰4$H‰L$@H‰L$H‰T$(H‰T$H‰D$0H‰D$è    H‹t$PH‹T$X¶\$ €û „ñ   H‰ñHƒş „İ   HƒÁH‰ĞHƒú „Å   HƒÀH‹H‹(H9ë…¨   ‹Y‹h9ë…š   H‹YH‹hH9ë…‰   H‹^0H‹j0H9ët
+ÆD$` HƒÄHÃH‰ğHƒÀ8H‰ÑHƒÁ8H‹H‹)H9ëuO‹X‹i9ëuEH‹XH‹iH9ëu8H‹^PH‹jPH9ët
+ÆD$` HƒÄHÃH‹^XH‹jXH9ët
+ÆD$` HƒÄHÃÆD$`HƒÄHÃÆD$` HƒÄHÃÆD$` HƒÄHÃ‰é4ÿÿÿ‰éÿÿÿÆD$` HƒÄHÃè    éhşÿÿ
+      î
+   runtime.eqstring   
+  0runtime.morestack_noctxt   0  "".autotmp_0005  type.*time.Time "".autotmp_0004  type.*time.Time "".autotmp_0001 ?type.string "".autotmp_0000 type.string "".~r2  type.bool "".q "type.*"".Category "".p  "type.*"".Category nÃF			      vª TgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a TgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440   V/data/goworkspace/src/blog/models/models.goş&type..hash."".Topic €
+  æ	eH‹%    H;a†V  Hƒì H‹\$(H‰$Hƒ<$ „2  H‹\$0H‰\$HÇD$   è    H‹D$H‹\$(H‰$Hƒ<$ „õ  Hƒ$H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ „¼  Hƒ$ H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ „ƒ  Hƒ$0H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ „J  Hƒ$@H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ „  Hƒ$XH‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ „Ø   Hƒ$pH‰D$0H‰D$HÇD$   è    H‹D$H‹\$(H‰$Hƒ<$ „–   Hƒ$xH‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ tdH$ˆ   H‰D$0H‰D$è    H‹D$H‹\$(H‰$Hƒ<$ t/H$    H‰D$0H‰D$HÇD$   è    H‹\$H‰\$8HƒÄ Ã‰%    ëÈ‰%    ë“‰%    é^ÿÿÿ‰%    éÿÿÿ‰%    éãşÿÿ‰%    éªşÿÿ‰%    éqşÿÿ‰%    é8şÿÿ‰%    éÿıÿÿ‰%    éÂıÿÿè    éıÿÿ
+      ~
+  runtime.memhash   Ø
+  runtime.strhash   ²
+  runtime.strhash   Œ
+  runtime.strhash   æ
+  (type..hash.time.Time   À
+  (type..hash.time.Time   ¬
+  runtime.memhash   †
+  runtime.strhash   Ş
+  (type..hash.time.Time   È
+  runtime.memhash   Ô	
+  0runtime.morestack_noctxt   0@  "".~r2  type.uintptr "".h type.uintptr "".p  type.*"".Topic @ß?@‰ € €  >Â TgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2 TgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb   V/data/goworkspace/src/blog/models/models.goş"type..eq."".Topic à  ÌeH‹%    H;a†‰  HƒìHH‹L$PH‹D$XH‹H‹(H9ët
+ÆD$` HƒÄHÃH‹YH‹hH9ët
+ÆD$` HƒÄHÃH‹qH‹IH‹PH‹@H9Á…,  H‰t$8H‰4$H‰L$@H‰L$H‰T$(H‰T$H‰D$0H‰D$è    ¶\$ €û „ò  H‹\$PHƒû „Ü  H‹S H‹C(H‹\$XHƒû „¾  H‹s H‹K(H9È…£  H‰T$(H‰$H‰D$0H‰D$H‰t$8H‰t$H‰L$@H‰L$è    ¶\$ €û „i  H‹\$PHƒû „S  H‹s0H‹K8H‹\$XHƒû „5  H‹S0H‹C8H9Á…  H‰t$8H‰4$H‰L$@H‰L$H‰T$(H‰T$H‰D$0H‰D$è    H‹t$PH‹T$X¶\$ €û „Ö  H‰ñHƒş „Â  HƒÁ@H‰ĞHƒú „ª  HƒÀ@H‹H‹(H9ë…  ‹Y‹h9ë…  H‹YH‹hH9ë…n  H‰ğHƒÀXH‰ÑHƒÁXH‹H‹)H9ë…G  ‹X‹i9ë…9  H‹XH‹iH9ë…(  H‹^pH‹jpH9ët
+ÆD$` HƒÄHÃH‰óH‹vxH‹ƒ€   H‰ÓH‹RxH‹‹€   H9È…â   H‰t$(H‰4$H‰D$0H‰D$H‰T$8H‰T$H‰L$@H‰L$è    H‹t$PH‹T$X¶\$ €û „   H‰ñHƒş „Š   HÁˆ   H‰ĞHƒú tvHˆ   H‹H‹(H9ëu[‹Y‹h9ëuQH‹YH‹hH9ëuDH‹    H‹ª    H9ët
+ÆD$` HƒÄHÃH‹¨   H‹ª¨   H9ët
+ÆD$` HƒÄHÃÆD$`HƒÄHÃÆD$` HƒÄHÃ‰ë†‰éoÿÿÿÆD$` HƒÄHÃÆD$` HƒÄHÃÆD$` HƒÄHÃ‰éOşÿÿ‰é7şÿÿÆD$` HƒÄHÃ‰éÄıÿÿ‰é¦ıÿÿÆD$` HƒÄHÃ‰é;ıÿÿ‰éıÿÿÆD$` HƒÄHÃè    éZüÿÿ
+      œ
+   runtime.eqstring   ş
+   runtime.eqstring   à
+   runtime.eqstring   ø	
+   runtime.eqstring   º
+  0runtime.morestack_noctxt   0  "".autotmp_0019  type.*time.Time "".autotmp_0018  type.*time.Time "".autotmp_0017  type.string "".autotmp_0016  type.string "".autotmp_0015  type.*time.Time "".autotmp_0014  type.*time.Time "".autotmp_0011  type.string "".autotmp_0010  type.string "".autotmp_0009  type.string "".autotmp_0008  type.string "".autotmp_0007 ?type.string "".autotmp_0006 type.string "".~r2  type.bool "".q type.*"".Topic "".p  type.*"".Topic ¬áÊ				 ° °  £ TgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a TgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440   V/data/goworkspace/src/blog/models/models.goş8go.string.hdr."this is true"                       0go.string."this is true"   ş0go.string."this is true"    this is true  şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·790e5cc5051fc0affc980ade09e929ec              şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           ş0"".initdoneÂ·  type.uint8   ş$"".GetAllTopicsÂ·f              "".GetAllTopics   ş"".initÂ·f              "".init   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440              şTgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a             ş4type..hashfunc."".Category              ,type..hash."".Category   ş0type..eqfunc."".Category              (type..eq."".Category   ş*type..alg."".Category                        4type..hashfunc."".Category     0type..eqfunc."".Category   ş"runtime.gcbits.01    ş@go.string.hdr."*models.Category"                       8go.string."*models.Category"   ş8go.string."*models.Category" 0  "*models.Category  ş"type.*"".Category                    }1 6                                                        0   runtime.algarray   @  "runtime.gcbits.01   P  @go.string.hdr."*models.Category"   p  4go.weak.type.**"".Category   €  "runtime.zerovalue      type."".Category   ş&runtime.gcbits.2202   " ş>go.string.hdr."models.Category"                       6go.string."models.Category"   ş6go.string."models.Category"     models.Category  ş$go.string.hdr."Id"                       go.string."Id"   şgo.string."Id"   Id  ş*go.string.hdr."Title"                       "go.string."Title"   ş"go.string."Title"   Title  ş.go.string.hdr."Created"                       &go.string."Created"   ş&go.string."Created"   Created  ş:go.string.hdr."orm:\"index\""                       2go.string."orm:\"index\""   ş2go.string."orm:\"index\""    orm:"index"  ş*go.string.hdr."Views"                       "go.string."Views"   ş"go.string."Views"   Views  ş2go.string.hdr."TopicTime"             	          *go.string."TopicTime"   ş*go.string."TopicTime"    TopicTime  ş4go.string.hdr."TopicCount"             
+          ,go.string."TopicCount"   ş,go.string."TopicCount"    TopicCount  ş>go.string.hdr."TopicLastUserId"                       6go.string."TopicLastUserId"   ş6go.string."TopicLastUserId"     TopicLastUserId  ş0go.string.hdr."Category"                       (go.string."Category"   ş(go.string."Category"    Category  ş6go.string.hdr."blog/models"                       .go.string."blog/models"   ş.go.string."blog/models"    blog/models  ş"go.importpath."".                       .go.string."blog/models"   ş type."".Category  À  À`       P        ßğ¹                                                                                                                                                                                                                             0                                       8                                       P                                       X                                               60  *type..alg."".Category   @  &runtime.gcbits.2202   P  >go.string.hdr."models.Category"   p  "type.*"".Category   €  "runtime.zerovalue   À  type."".Category   À  $go.string.hdr."Id"   à  type.int64     *go.string.hdr."Title"   °  type.string   à  .go.string.hdr."Created"   €  type.time.Time     :go.string.hdr."orm:\"index\""   °  *go.string.hdr."Views"   Ğ  type.int64   à  :go.string.hdr."orm:\"index\""   €  2go.string.hdr."TopicTime"      type.time.Time   °  :go.string.hdr."orm:\"index\""   Ğ  4go.string.hdr."TopicCount"   ğ  type.int64      >go.string.hdr."TopicLastUserId"   À  type.int64   `ğ  type."".Category   ğ  0go.string.hdr."Category"   €  "go.importpath."".   À  type."".Category   şTgclocalsÂ·33cdeccccebe80329f1fdbee7f5874cb           şTgclocalsÂ·0b86ef39f3fed835f14ba5f4d7c62fa2             şTgclocalsÂ·a8eabfc4a4514ed6b3b0c61e9680e440              şTgclocalsÂ·3bb21ca8fe1d99a3e492463bd711418a             ş.type..hashfunc."".Topic              &type..hash."".Topic   ş*type..eqfunc."".Topic              "type..eq."".Topic   ş$type..alg."".Topic                        .type..hashfunc."".Topic     *type..eqfunc."".Topic   ş:go.string.hdr."*models.Topic"                       2go.string."*models.Topic"   ş2go.string."*models.Topic"    *models.Topic  ştype.*"".Topic                    İ%r 6                                                        0   runtime.algarray   @  "runtime.gcbits.01   P  :go.string.hdr."*models.Topic"   p  .go.weak.type.**"".Topic   €  "runtime.zerovalue     type."".Topic   ş*runtime.gcbits.54a408   T¤ ş8go.string.hdr."models.Topic"                       0go.string."models.Topic"   ş0go.string."models.Topic"    models.Topic  ş&go.string.hdr."Uid"                       go.string."Uid"   şgo.string."Uid"   Uid  ş.go.string.hdr."Content"                       &go.string."Content"   ş&go.string."Content"   Content  şDgo.string.hdr."orm:\"size(5000)\""                       <go.string."orm:\"size(5000)\""   ş<go.string."orm:\"size(5000)\"" 0  "orm:"size(5000)"  ş4go.string.hdr."Attachment"             
+          ,go.string."Attachment"   ş,go.string."Attachment"    Attachment  ş.go.string.hdr."Updated"                       &go.string."Updated"   ş&go.string."Updated"   Updated  ş,go.string.hdr."Author"                       $go.string."Author"   ş$go.string."Author"   Author  ş2go.string.hdr."ReplyTime"             	          *go.string."ReplyTime"   ş*go.string."ReplyTime"    ReplyTime  ş4go.string.hdr."ReplyCount"             
+          ,go.string."ReplyCount"   ş,go.string."ReplyCount"    ReplyCount  ş>go.string.hdr."ReplyLastUserId"                       6go.string."ReplyLastUserId"   ş6go.string."ReplyLastUserId"     ReplyLastUserId  ş*go.string.hdr."Topic"                       "go.string."Topic"   ş"go.string."Topic"   Topic  ştype."".Topic  Ğ	  Ğ	°               Êš£µ                                                                                                                                                                                                                                                                     0                                       @                                       X                                       p                                       x                                       ˆ                                                                               ¨                                               N0  $type..alg."".Topic   @  *runtime.gcbits.54a408   P  8go.string.hdr."models.Topic"   p  type.*"".Topic   €  "runtime.zerovalue   À type."".Topic   À  $go.string.hdr."Id"   à  type.int64     &go.string.hdr."Uid"   °  type.int64   à  *go.string.hdr."Title"   €  type.string   °  .go.string.hdr."Content"   Ğ  type.string   à  Dgo.string.hdr."orm:\"size(5000)\""   €  4go.string.hdr."Attachment"      type.string   Ğ  .go.string.hdr."Created"   ğ  type.time.Time   €  :go.string.hdr."orm:\"index\""      .go.string.hdr."Updated"   À  type.time.Time   Ğ  :go.string.hdr."orm:\"index\""   ğ  *go.string.hdr."Views"     type.int64      :go.string.hdr."orm:\"index\""   À  ,go.string.hdr."Author"   à  type.string     2go.string.hdr."ReplyTime"   °  type.time.Time   À  :go.string.hdr."orm:\"index\""   à  4go.string.hdr."ReplyCount"   €  type.int64   °  >go.string.hdr."ReplyLastUserId"   Ğ  type.int64   `€	 type."".Topic   €	  *go.string.hdr."Topic"   	  "go.importpath."".    	Ğ	 type."".Topic   ş.go.string.hdr."runtime"                       &go.string."runtime"   ş&go.string."runtime"   runtime  ş,go.importpath.runtime.                       &go.string."runtime"   ş(go.string.hdr."time"                        go.string."time"   ş go.string."time"   
+time  ş&go.importpath.time.                        go.string."time"   ş2type..hash."".CategoryÂ·f              ,type..hash."".Category   ş.type..eq."".CategoryÂ·f              (type..eq."".Category   ş,type..hash."".TopicÂ·f              &type..hash."".Topic   ş(type..eq."".TopicÂ·f              "type..eq."".Topic   ş"runtime.zerovalue      ÿÿgo13ld
