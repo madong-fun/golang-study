@@ -12,10 +12,10 @@ type HomeControllor struct {
 
 func (this *HomeControllor) Get() {
 	this.Data["IsHome"] = true
-	this.TplNames = "home.html"
+	this.TplName = "home.html"
 	this.Data["IsLogin"] = checkAccount(this.Ctx)
 	fmt.Println(checkAccount(this.Ctx))
-	topics, err := models.GetAllTopics(true)
+	topics, err := models.GetAllTopics("", "", true)
 	if err != nil {
 		beego.Error(err)
 	}
