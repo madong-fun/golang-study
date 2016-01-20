@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"blog/models"
-
 	"fmt"
 	"github.com/astaxie/beego"
 )
@@ -14,8 +13,11 @@ type HomeControllor struct {
 func (this *HomeControllor) Get() {
 	this.Data["IsHome"] = true
 	this.TplNames = "home.html"
-	//his.Data["IsLogin"] = checkAccount(this.Ctx)
-	str := models.GetAllTopics(true)
-	fmt.Println(str)
-	this.Data["Topics"] = str
+	this.Data["IsLogin"] = checkAccount(this.Ctx)
+	fmt.Println(checkAccount(this.Ctx))
+	topics, err := models.GetAllTopics(true)
+	if err != nil {
+		beego.Error(err)
+	}
+	this.Data["Topics"] = topics
 }
