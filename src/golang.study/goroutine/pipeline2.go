@@ -7,7 +7,7 @@ import (
 func main() {
 	naturals := make(chan int) //可读写
 	squares := make(chan int)
-	go counter(naturals)
+	go counter(naturals) //隐式转换
 	go squarer(squares, naturals)
 	printer(squares)
 }
